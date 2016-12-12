@@ -3,9 +3,10 @@ var Player = function(name) {
   // this.playerWords = [];
   // var game = new Game();
 
-  Player.prototype.playerName = function() {
-    return this.name;
-  };
+  // Player.prototype.playerName = function() {
+  //   return this.name;
+  // };
+  
 };
 
 module.exports = Player;

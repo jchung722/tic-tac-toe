@@ -10,8 +10,8 @@ describe('Player', function() {
 
   describe('playerName', function() {
     it('should return the name of the player', function() {
-      expect(player1.playerName()).toEqual("ELLE");
-      expect(player2.playerName()).toEqual("JESSICA");
+      expect(player1.name).toEqual("ELLE");
+      expect(player2.name).toEqual("JESSICA");
     });
   });
 });
