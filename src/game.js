@@ -1,5 +1,4 @@
 import _ from 'underscore';
-import Player from "player";
 
 var Game = function(player1, player2) {
 
@@ -50,12 +49,20 @@ var Game = function(player1, player2) {
     } else {
       this.activePlayer = this.player2;
     }
-    console.log(turnCounter);
-    console.log(this.activePlayer);
+    // console.log(turnCounter);
+    // console.log(this.activePlayer);
     return turnCounter
   };
 
+};
+
+var Player = function(name, letter) {
+  this.name = name.toUpperCase();
+  this.letter = letter
+
+  this.scorecard = { "Win":0, "Lose": 0, "Draw": 0}
 
 };
 
+module.exports = Player;
 module.exports = Game;
