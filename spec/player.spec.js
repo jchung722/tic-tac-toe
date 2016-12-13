@@ -17,5 +17,14 @@ describe('Player', function() {
     });
   });
 
+  describe('get scorecard assigned to player with defaults of 0', function() {
+    it('should return the player scorecard', function() {
+      expect(player1.scorecard).toEqual({ "Win":0, "Lose": 0, "Draw": 0});
+      expect(player1.scorecard["Win"]).toEqual(0);
+      // expect(player2.name).toEqual("JESSICA");
+      // expect(player2.letter).toEqual("O");
+    });
+  });
+
 
 });
