@@ -5,9 +5,11 @@ var Game = function(player1, player2) {
 
   const GAME_TILES = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
   var currentBoard = GAME_TILES;
+  var turnCounter = 0;
 
   this.player1 = new Player(player1, "X");
   this.player2 = new Player(player2, "O");
+  this.activePlayer = this.player1;
 
   // player1.letter for move
   Game.prototype.play = function(player, move) {
@@ -39,6 +41,18 @@ var Game = function(player1, player2) {
     } else {
       return false;
     }
+  };
+
+  Game.prototype.turnHandler = function () {
+    turnCounter += 1;
+    if (turnCounter % 2 == 0) {
+      this.activePlayer = this.player1;
+    } else {
+      this.activePlayer = this.player2;
+    }
+    console.log(turnCounter);
+    console.log(this.activePlayer);
+    return turnCounter
   };
 
 

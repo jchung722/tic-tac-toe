@@ -46,7 +46,22 @@ describe('Game', function() {
     it('should throw an error if move is a string', function() {
       expect(function() { testGame.play(testGame.player1, "a");}).toThrow(TypeError("Please choose a valid move."));
     });
-  })
+  }); //describe play end
+
+  describe('turnHandler', function() {
+    it('should increment turnCounter', function() {
+      expect(testGame.turnHandler()).toEqual(1);
+      expect(testGame.turnHandler()).toEqual(2);
+    });
+
+    it('should swap activePlayer', function() {
+      expect(testGame.activePlayer.name).toEqual("ELLE");
+      expect(testGame.turnHandler()).toEqual(1);
+      expect(testGame.activePlayer.name).toEqual("JESSICA");
+      expect(testGame.turnHandler()).toEqual(2);
+      expect(testGame.turnHandler()).toEqual(3);
+    });
+  });
 
 
 });
