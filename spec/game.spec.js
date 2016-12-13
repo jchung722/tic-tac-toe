@@ -16,17 +16,37 @@ describe('Game', function() {
 
   describe('winCheck', function() {
     it('should return true if there is a winner', function() {
-      expect(testGame.winCheck(["X", "X", "X", " ", " ", " ", " ", " ", " "]));
+      expect(testGame.winCheck(["X", "X", "X", " ", " ", " ", " ", " ", " "])).toEqual(true);
     });
 
     it('should return false with an empty board', function() {
-      expect(testGame.winCheck([" ", " ", " ", " ", " ", " ", " ", " ", " "]));
+      expect(testGame.winCheck([" ", " ", " ", " ", " ", " ", " ", " ", " "])).toEqual(false);
     });
 
     it('should return false when the board is filled but there is no winner', function() {
-      expect(testGame.winCheck(["X", "X", "O", "O", "O", "X", "X", "O", "X"]));
+      expect(testGame.winCheck(["X", "X", "O", "O", "O", "X", "X", "O", "X"])).toEqual(false);
     });
-  });
+  }); // describe winCheck end
+
+  describe('play', function() {
+    it('should return move in board', function() {
+      expect(testGame.play(testGame.player1, 2)).toEqual([" ", " ", "X", " ", " ", " ", " ", " ", " "]);
+      expect(testGame.play(testGame.player2, 1)).toEqual([" ", "O", "X", " ", " ", " ", " ", " ", " "]);
+    });
+
+    it('should throw an error if move made in spot that is taken', function() {
+      expect(testGame.play(testGame.player2, 2)).toEqual([" ", " ", "O", " ", " ", " ", " ", " ", " "]);
+      expect(function() { testGame.play(testGame.player1, 2);}).toThrow(TypeError("Please choose a valid move."));
+    });
+
+    it('should throw an error if move outside 0-8 are used', function() {
+      expect(function() { testGame.play(testGame.player1, 10);}).toThrow(TypeError("Please choose a valid move."));
+    });
+
+    it('should throw an error if move is a string', function() {
+      expect(function() { testGame.play(testGame.player1, "a");}).toThrow(TypeError("Please choose a valid move."));
+    });
+  })
 
 
 });

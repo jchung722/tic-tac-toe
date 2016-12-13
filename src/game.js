@@ -10,8 +10,16 @@ var Game = function(player1, player2) {
   this.player2 = new Player(player2, "O");
 
   // player1.letter for move
+  Game.prototype.play = function(player, move) {
+    if (move >= 0 && move < 9 && currentBoard[move] == " ") {
+      currentBoard[move] = player.letter;
+      return currentBoard;
+    } else {
+      throw new TypeError("Please choose a valid move.");
+    };
+  }
 
-  var winCheck = function(board) {
+  Game.prototype.winCheck = function(board) {
     if (board[0] == board[1] == board[2] && board[0] != " ") {
       return true;
     } else if (board[3] == board[4] == board[5] && board[3] != " ") {
@@ -34,6 +42,6 @@ var Game = function(player1, player2) {
   };
 
 
-  };
+};
 
 module.exports = Game;
