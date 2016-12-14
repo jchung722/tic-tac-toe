@@ -12,18 +12,13 @@ var Game = function(player1, player2) {
   this.activePlayer = this.player1;
   this.inactivePlayer = this.player2;
 
-  Game.prototype.play = function(player, move) {
+  Game.prototype.play = function(move) {
     if (move >= 0 && move < 9 && currentBoard[move] == " ") {
-      currentBoard[move] = player.letter;
-      console.log(currentBoard);
-      // console.log(this.winCheck(currentBoard))
+      currentBoard[move] = this.activePlayer.letter;
       if (this.winCheck(currentBoard) == false && turnCounter < 9){
         this.turnHandler();
       };
-      // console.log(currentBoard);
       this.score();
-      console.log(this.activePlayer.scorecard);
-      console.log(this.inactivePlayer.scorecard);
       return currentBoard;
     } else {
       throw new TypeError("Please choose a valid move.");

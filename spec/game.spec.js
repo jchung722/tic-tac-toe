@@ -30,21 +30,21 @@ describe('Game', function() {
 
   describe('play', function() {
     it('should return move in board', function() {
-      expect(testGame.play(testGame.player1, 2)).toEqual([" ", " ", "X", " ", " ", " ", " ", " ", " "]);
-      expect(testGame.play(testGame.player2, 1)).toEqual([" ", "O", "X", " ", " ", " ", " ", " ", " "]);
+      expect(testGame.play(2)).toEqual([" ", " ", "X", " ", " ", " ", " ", " ", " "]);
+      expect(testGame.play(1)).toEqual([" ", "O", "X", " ", " ", " ", " ", " ", " "]);
     });
 
     it('should throw an error if move made in spot that is taken', function() {
-      expect(testGame.play(testGame.player2, 2)).toEqual([" ", " ", "O", " ", " ", " ", " ", " ", " "]);
-      expect(function() { testGame.play(testGame.player1, 2);}).toThrow(TypeError("Please choose a valid move."));
+      expect(testGame.play(2)).toEqual([" ", " ", "X", " ", " ", " ", " ", " ", " "]);
+      expect(function() { testGame.play(2)}).toThrow(TypeError("Please choose a valid move."));
     });
 
     it('should throw an error if move outside 0-8 are used', function() {
-      expect(function() { testGame.play(testGame.player1, 10);}).toThrow(TypeError("Please choose a valid move."));
+      expect(function() { testGame.play(10)}).toThrow(TypeError("Please choose a valid move."));
     });
 
     it('should throw an error if move is a string', function() {
-      expect(function() { testGame.play(testGame.player1, "a");}).toThrow(TypeError("Please choose a valid move."));
+      expect(function() { testGame.play("a")}).toThrow(TypeError("Please choose a valid move."));
     });
   }); //describe play end
 
@@ -66,11 +66,11 @@ describe('Game', function() {
   describe('score', function() {
     it('should increment scorecard when a player wins/player loses', function() {
       // currentBoard = [" ", " ", " ", " ", "O", "O", "X", "X", "X"];
-      testGame.play(testGame.activePlayer, 6);
-      testGame.play(testGame.activePlayer, 4);
-      testGame.play(testGame.activePlayer, 7);
-      testGame.play(testGame.activePlayer, 5);
-      testGame.play(testGame.activePlayer, 8);
+      testGame.play(6);
+      testGame.play(4);
+      testGame.play(7);
+      testGame.play(5);
+      testGame.play(8);
       expect(testGame.activePlayer.scorecard["Win"]).toEqual(1);
       expect(testGame.activePlayer.scorecard["Lose"]).toEqual(0);
       expect(testGame.inactivePlayer.scorecard["Lose"]).toEqual(1);
@@ -79,15 +79,15 @@ describe('Game', function() {
 
     it('should increment scorecards when game ends in draw', function() {
       // currentBoard = ["X", "X", "O", "O", "O", "X", "X", "O", "X"]
-      testGame.play(testGame.activePlayer, 0);
-      testGame.play(testGame.activePlayer, 2);
-      testGame.play(testGame.activePlayer, 1);
-      testGame.play(testGame.activePlayer, 3);
-      testGame.play(testGame.activePlayer, 5);
-      testGame.play(testGame.activePlayer, 4);
-      testGame.play(testGame.activePlayer, 6);
-      testGame.play(testGame.activePlayer, 7);
-      testGame.play(testGame.activePlayer, 8);
+      testGame.play(0);
+      testGame.play(2);
+      testGame.play(1);
+      testGame.play(3);
+      testGame.play(5);
+      testGame.play(4);
+      testGame.play(6);
+      testGame.play(7);
+      testGame.play(8);
       expect(testGame.activePlayer.scorecard["Draw"]).toEqual(1);
       expect(testGame.inactivePlayer.scorecard["Draw"]).toEqual(1);
     });
