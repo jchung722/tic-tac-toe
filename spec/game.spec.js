@@ -63,5 +63,19 @@ describe('Game', function() {
     });
   });
 
+  describe('score', function() {
+    it('should increment score when a player wins', function() {
+      // currentBoard = ["X", "X", "X", " ", "O", "O", " ", " ", " "];
+      // testGame.play(testGame.activePlayer, 6);
+      // testGame.play(testGame.activePlayer, 4);
+      // testGame.play(testGame.activePlayer, 7);
+      // testGame.play(testGame.activePlayer, 5);
+      // testGame.play(testGame.activePlayer, 8);
+      // expect(testGame.activePlayer.scorecard["Win"]).toEqual(1);
+      // expect(testGame.activePlayer.scorecard["Lose"]).toEqual(0);
+      // expect(testGame.inactivePlayer.scorecard["Lose"]).toEqual(1);
+      // expect(testGame.inactivePlayer.scorecard["Win"]).toEqual(0);
+    });
+  });
 
 });
