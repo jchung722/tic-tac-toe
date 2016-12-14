@@ -64,18 +64,34 @@ describe('Game', function() {
   });
 
   describe('score', function() {
-    it('should increment score when a player wins', function() {
-      // currentBoard = ["X", "X", "X", " ", "O", "O", " ", " ", " "];
-      // testGame.play(testGame.activePlayer, 6);
-      // testGame.play(testGame.activePlayer, 4);
-      // testGame.play(testGame.activePlayer, 7);
-      // testGame.play(testGame.activePlayer, 5);
-      // testGame.play(testGame.activePlayer, 8);
-      // expect(testGame.activePlayer.scorecard["Win"]).toEqual(1);
-      // expect(testGame.activePlayer.scorecard["Lose"]).toEqual(0);
-      // expect(testGame.inactivePlayer.scorecard["Lose"]).toEqual(1);
-      // expect(testGame.inactivePlayer.scorecard["Win"]).toEqual(0);
+    it('should increment scorecard when a player wins/player loses', function() {
+      // currentBoard = [" ", " ", " ", " ", "O", "O", "X", "X", "X"];
+      testGame.play(testGame.activePlayer, 6);
+      testGame.play(testGame.activePlayer, 4);
+      testGame.play(testGame.activePlayer, 7);
+      testGame.play(testGame.activePlayer, 5);
+      testGame.play(testGame.activePlayer, 8);
+      expect(testGame.activePlayer.scorecard["Win"]).toEqual(1);
+      expect(testGame.activePlayer.scorecard["Lose"]).toEqual(0);
+      expect(testGame.inactivePlayer.scorecard["Lose"]).toEqual(1);
+      expect(testGame.inactivePlayer.scorecard["Win"]).toEqual(0);
     });
+
+    it('should increment scorecards when game ends in draw', function() {
+      // currentBoard = ["X", "X", "O", "O", "O", "X", "X", "O", "X"]
+      testGame.play(testGame.activePlayer, 0);
+      testGame.play(testGame.activePlayer, 2);
+      testGame.play(testGame.activePlayer, 1);
+      testGame.play(testGame.activePlayer, 3);
+      testGame.play(testGame.activePlayer, 5);
+      testGame.play(testGame.activePlayer, 4);
+      testGame.play(testGame.activePlayer, 6);
+      testGame.play(testGame.activePlayer, 7);
+      testGame.play(testGame.activePlayer, 8);
+      expect(testGame.activePlayer.scorecard["Draw"]).toEqual(1);
+      expect(testGame.inactivePlayer.scorecard["Draw"]).toEqual(1);
+    });
+
   });
 
 });

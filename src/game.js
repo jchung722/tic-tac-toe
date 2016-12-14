@@ -17,37 +17,37 @@ var Game = function(player1, player2) {
       currentBoard[move] = player.letter;
       console.log(currentBoard);
       // console.log(this.winCheck(currentBoard))
-      if (this.winCheck(currentBoard) == false && turnCounter < 8){
+      if (this.winCheck(currentBoard) == false && turnCounter < 9){
         this.turnHandler();
       };
       // console.log(currentBoard);
       this.score();
-      // console.log(this.activePlayer.scorecard);
-      // console.log(this.inactivePlayer.scorecard);
+      console.log(this.activePlayer.scorecard);
+      console.log(this.inactivePlayer.scorecard);
       return currentBoard;
     } else {
       throw new TypeError("Please choose a valid move.");
     };
   }
 
-  // We're not hitting turnHandler in play because winCheck is sure the board is true re: a win with every single move and is incrementing it accordingly. The logic on winCheck seems sound according to node. Score is also incrementing with every move as a result. turnCounter is verified as working via test. Weird things are happening with tracking of moves with X and O - sometimes things disappear? - and only one side's letters are showing until the third or fourth move.
+  // Score is also incrementing with every move as a result. turnCounter is verified as working via test. Weird things are happening with tracking of moves with X and O - sometimes things disappear? - and only one side's letters are showing until the third or fourth move.
 
   Game.prototype.winCheck = function(board) {
-    if (board[0] == board[1] == board[2] && board[0] != " ") {
+    if (board[0] == board[1] &&  board[1] == board[2] && board[0] != " ") {
       return true;
-    } else if (board[3] == board[4] == board[5] && board[3] != " ") {
+    } else if (board[3] == board[4] && board[4] == board[5] && board[3] != " ") {
       return true;
-    } else if (board[6] == board[7] == board[8] && board[6] != " ") {
+    } else if (board[6] == board[7] && board[7] == board[8] && board[6] != " ") {
       return true;
-    } else if (board[0] == board[3] == board[6] && board[0] != " ") {
+    } else if (board[0] == board[3] && board[3] == board[6] && board[0] != " ") {
       return true;
-    } else if (board[1] == board[4] == board[7] && board[1] != " ") {
+    } else if (board[1] == board[4] && board[4] == board[7] && board[1] != " ") {
       return true;
-    } else if (board[2] == board[5] == board[8] && board[2] != " ") {
+    } else if (board[2] == board[5] && board[5] == board[8] && board[2] != " ") {
       return true;
-    } else if (board[2] == board[4] == board[6] && board[2] != " ") {
+    } else if (board[2] == board[4] && board[4] == board[6] && board[2] != " ") {
       return true;
-    } else if (board[0] == board[4] == board[8] && board[0] != " ") {
+    } else if (board[0] == board[4] && board[4] == board[8] && board[0] != " ") {
       return true;
     } else {
       return false;
@@ -62,15 +62,12 @@ var Game = function(player1, player2) {
     } else {
       this.activePlayer = this.player2;
       this.inactivePlayer = this.player1;
-    }
-    // console.log(turnCounter);
-    // console.log(this.activePlayer);
-    return turnCounter
+    };
+    return turnCounter;
   };
 
   Game.prototype.score = function() {
     if (this.winCheck(currentBoard) == true) {
-      // console.log(this.winCheck(currentBoard));
       this.activePlayer.scorecard["Win"] += 1;
       this.inactivePlayer.scorecard["Lose"] += 1;
     } else if (turnCounter == 8 && this.winCheck(currentBoard) == false) {
