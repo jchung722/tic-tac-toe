@@ -2,10 +2,13 @@ import Game from "game";
 import Player from "game";
 
 describe('Game', function() {
-
+  var player1;
+  var player2;
   var testGame;
   beforeEach(function() {
     testGame = new Game("elle", "jessica");
+    player1 = new Player("elle", "X");
+    player2 = new Player("jessica", "O");
   });
 
   describe('Game', function() {
@@ -68,12 +71,6 @@ describe('Game', function() {
 });
 
 describe('Player', function() {
-  var player1;
-  var player2;
-  beforeEach(function() {
-    player1 = new Player("elle", "X");
-    player2 = new Player("jessica", "O");
-  });
 
   describe('get name assigned to player', function() {
     it('should return the name of the player', function() {

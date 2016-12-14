@@ -17,8 +17,8 @@ var Game = function(player1, player2) {
       return currentBoard;
     } else {
       throw new TypeError("Please choose a valid move.");
-    };
-  }
+    }
+  };
 
   Game.prototype.winCheck = function(board) {
     if (board[0] == board[1] == board[2] && board[0] != " ") {
