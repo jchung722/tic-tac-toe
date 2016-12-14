@@ -3,8 +3,7 @@ import Player from "player";
 
 var Game = function(player1, player2) {
 
-  const GAME_TILES = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
-  var currentBoard = GAME_TILES;
+  var currentBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
   var turnCounter = 0;
 
   this.player1 = new Player(player1, "X");
@@ -18,14 +17,12 @@ var Game = function(player1, player2) {
       if (this.winCheck(currentBoard) == false && turnCounter < 9){
         this.turnHandler();
       };
-      this.score();
+      this.scoreKeeper();
       return currentBoard;
     } else {
       throw new TypeError("Please choose a valid move.");
     };
   }
-
-  // Score is also incrementing with every move as a result. turnCounter is verified as working via test. Weird things are happening with tracking of moves with X and O - sometimes things disappear? - and only one side's letters are showing until the third or fourth move.
 
   Game.prototype.winCheck = function(board) {
     if (board[0] == board[1] &&  board[1] == board[2] && board[0] != " ") {
@@ -61,7 +58,7 @@ var Game = function(player1, player2) {
     return turnCounter;
   };
 
-  Game.prototype.score = function() {
+  Game.prototype.scoreKeeper = function() {
     if (this.winCheck(currentBoard) == true) {
       this.activePlayer.scorecard["Win"] += 1;
       this.inactivePlayer.scorecard["Lose"] += 1;
@@ -71,6 +68,10 @@ var Game = function(player1, player2) {
     }
   };
 
+  Game.prototype.newGame = function() {
+    currentBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
+    turnCounter = 0;
+  }
 
 };
 
