@@ -135,7 +135,6 @@ describe('Game', function() {
 
   describe('newGame', function() {
     it('should restart a new game with a clean board', function() {
-      // currentBoard = [" ", " ", " ", " ", "O", "O", "X", "X", "X"];
       testGame.play(6);
       testGame.play(4);
       testGame.play(7);
@@ -143,6 +142,7 @@ describe('Game', function() {
       expect(testGame.play(8)).toEqual([" ", " ", " ", " ", "O", "O", "X", "X", "X"]);
       testGame.newGame();
       expect(testGame.play(1)).toEqual([" ", "X", " ", " ", " ", " ", " ", " ", " "]);
+      expect(testGame.turnHandler()).toEqual(2);
     });
   });
 
