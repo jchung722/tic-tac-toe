@@ -1,11 +1,11 @@
-import Player from "player";
+import Player from "app/models/player";
 import Backbone from 'backbone';
 
 const Game = Backbone.Model.extend({
   initialize: function(player1, player2) {
 
-  var currentBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
-  var turnCounter = 0;
+  this.set("currentBoard", [" ", " ", " ", " ", " ", " ", " ", " ", " "]);
+  this.set("turnCounter", 0);
 
   this.player1 = new Player(player1, "X");
   this.player2 = new Player(player2, "O");
@@ -14,13 +14,13 @@ const Game = Backbone.Model.extend({
   },
 
   play: function(move) {
-    if (move >= 0 && move < 9 && currentBoard[move] == " ") {
-      currentBoard[move] = this.activePlayer.letter;
-      if (this.winCheck(currentBoard) == false && turnCounter < 9){
+    if (move >= 0 && move < 9 && this.get("currentBoard")[move] == " ") {
+      this.get("currentBoard")[move] = this.activePlayer.letter;
+      if (this.winCheck(this.get("currentBoard")) == false && this.get("turnCounter") < 9){
         this.turnHandler();
       }
       this.scoreKeeper();
-      return currentBoard;
+      return this.get("currentBoard");
     } else {
       throw new TypeError("Please choose a valid move.");
     }
@@ -49,30 +49,30 @@ const Game = Backbone.Model.extend({
   },
 
   turnHandler: function () {
-    turnCounter += 1;
-    if (turnCounter % 2 == 0) {
+    this.set("turnCounter", this.get("turnCounter") + 1);
+    if (this.get("turnCounter") % 2 == 0) {
       this.activePlayer = this.player1;
       this.inactivePlayer = this.player2;
     } else {
       this.activePlayer = this.player2;
       this.inactivePlayer = this.player1;
     }
-    return turnCounter;
+    return this.get("turnCounter");
   },
 
   scoreKeeper: function() {
-    if (this.winCheck(currentBoard) == true) {
+    if (this.winCheck(this.get("currentBoard")) == true) {
       this.activePlayer.scorecard["Win"] += 1;
       this.inactivePlayer.scorecard["Lose"] += 1;
-    } else if (turnCounter == 8 && this.winCheck(currentBoard) == false) {
+    } else if (this.get("turnCounter") == 8 && this.winCheck(this.get("currentBoard")) == false) {
       this.activePlayer.scorecard["Draw"] += 1;
       this.inactivePlayer.scorecard["Draw"] += 1;
     }
   },
 
   newGame: function() {
-    currentBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
-    turnCounter = 0;
+    this.set("currentBoard", [" ", " ", " ", " ", " ", " ", " ", " ", " "]);
+    this.set("turnCounter", 0);
   }
 
 });
