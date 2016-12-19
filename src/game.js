@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import Player from "player";
 
 var Game = function(player1, player2) {
