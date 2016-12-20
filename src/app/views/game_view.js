@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Backbone from 'backbone';
 import BoardView from 'app/views/board_view';
 
@@ -13,3 +14,5 @@ const GameView = Backbone.View.extend({
     })
   }
 })
+
+export default GameView;

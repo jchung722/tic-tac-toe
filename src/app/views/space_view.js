@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Backbone from 'backbone';
 
 const SpaceView = Backbone.View.extend({
