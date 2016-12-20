@@ -1,0 +1,18 @@
+div {
+  background-color: green;
+  height: 140px;
+  width: 140px;
+  margin: 1% 1% 1% 1%;
+  display: inline-block;
+  text-align: center;
+}
+
+div:hover {
+  background-color: white;
+}
+
+#board {
+  height: 500px;
+  width: 500px;
+  background-color: grey;
+}

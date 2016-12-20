@@ -8,3 +8,5 @@ var gameView = new GameView({
   el: '#game',
   model: game
 });
+
+gameView.render();

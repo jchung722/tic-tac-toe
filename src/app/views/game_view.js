@@ -4,7 +4,7 @@ import BoardView from 'app/views/board_view';
 
 const GameView = Backbone.View.extend({
   initialize: function() {
-    this.render();
+
   },
 
   render: function() {
@@ -12,6 +12,7 @@ const GameView = Backbone.View.extend({
       model: this.model,
       el: this.$('main')
     })
+    boardView.render();
   }
 })
 

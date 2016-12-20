@@ -3,7 +3,6 @@ import Backbone from 'backbone';
 
 const Game = Backbone.Model.extend({
   initialize: function(player1, player2) {
-
   this.set("currentBoard", [" ", " ", " ", " ", " ", " ", " ", " ", " "]);
   this.set("turnCounter", 0);
 
@@ -20,6 +19,7 @@ const Game = Backbone.Model.extend({
         this.turnHandler();
       }
       this.scoreKeeper();
+      this.set("currentBoard", this.get("currentBoard"));
       return this.get("currentBoard");
     } else {
       throw new TypeError("Please choose a valid move.");
