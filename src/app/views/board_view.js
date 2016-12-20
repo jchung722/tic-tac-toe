@@ -7,6 +7,11 @@ const BoardView = Backbone.View.extend({
   },
 
   render: function() new Promise(function(resolve, reject) {
-    
+    this.model.get("currentBoard").forEach(function(input) {
+      const space = new SpaceView({
+        letter: input
+      });
+      this.$el.append(card.render().$el);
+    })
   });
 })
