@@ -13,13 +13,10 @@ const Game = Backbone.Model.extend({
   },
 
   play: function(move) {
-    if (move >= 0 && move < 9 && this.get("currentBoard")[move] == " ") {
+    if (move >= 0 && move < 9 && this.get("currentBoard")[move] == " " && this.winCheck(this.get("currentBoard")) == false && this.get("turnCounter") < 9) {
       this.get("currentBoard")[move] = this.activePlayer.letter;
-      if (this.winCheck(this.get("currentBoard")) == false && this.get("turnCounter") < 9){
-        this.turnHandler();
-      }
+      this.turnHandler();
       this.scoreKeeper();
-      this.set("currentBoard", this.get("currentBoard"));
       return this.get("currentBoard");
     } else {
       throw new TypeError("Please choose a valid move.");

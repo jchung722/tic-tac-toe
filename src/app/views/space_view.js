@@ -19,7 +19,6 @@ const SpaceView = Backbone.View.extend({
   getMove: function(event){
     this.model.play(this.move);
     this.trigger('updateBoard', this.model);
-    console.log(this.model.get('currentBoard'));
   }
 
 })

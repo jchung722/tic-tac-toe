@@ -3,6 +3,8 @@ div {
   height: 140px;
   width: 140px;
   margin: 1% 1% 1% 1%;
+  padding: 1% 1% 1% 1%;
+  font-size: 100px;
   display: inline-block;
   text-align: center;
 }
@@ -15,4 +17,5 @@ div:hover {
   height: 500px;
   width: 500px;
   background-color: grey;
+  /*display: inline-table;*/
 }

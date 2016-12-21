@@ -8,17 +8,20 @@ const BoardView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log(this.model.get("currentBoard"));
     const board = this.$el;
     var self = this;
     var moveSpace = 0;
     board.empty();
-    this.currentBoard.forEach(function(input) {
+    this.model.get("currentBoard").forEach(function(input) {
+      console.log(this.model.get("turnCounter"));
+      console.log(this.model.get(""))
+      console.log(this.model.wincheck)
       const space = new SpaceView({
         model: self.model,
         move: moveSpace,
         letter: input
       });
+
       moveSpace += 1;
       this.listenTo(space, 'updateBoard', this.render);
       board.append(space.render().$el);
