@@ -56,12 +56,22 @@ button {
   background-color: white;
   font-family: 'Mallanna', sans-serif;
   font-size: 20px;
-  border: 3px solid #99ffcd;
-  margin: 10px 0 10px 0;
+  border: 3px solid black;
+  margin: 0 5px 10px 5px;
   transition-duration: 0.4s;
+  width: 125px;
 }
 
 button:hover {
+  background-color: black;
+  color: white;
+}
+
+#clear {
+  border: 3px solid #99ffcd;
+}
+
+#clear:hover {
   background-color: #99ffcd;
 }
 
