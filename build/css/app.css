@@ -7,6 +7,7 @@ div {
   font-size: 100px;
   display: inline-block;
   text-align: center;
+  vertical-align: top;
 }
 
 div:hover {
@@ -17,5 +18,10 @@ div:hover {
   height: 500px;
   width: 500px;
   background-color: grey;
+  margin: auto;
   /*display: inline-table;*/
+}
+
+h1 {
+  text-align: center;
 }

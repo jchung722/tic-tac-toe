@@ -12,13 +12,15 @@ const BoardView = Backbone.View.extend({
     var self = this;
     var moveSpace = 0;
     board.empty();
+    console.log(this.model.player1.scorecard);
+    console.log(this.model.player2.scorecard);
+    console.log(this.model.activePlayer.name);
     this.model.get("currentBoard").forEach(function(input) {
       const space = new SpaceView({
         model: self.model,
         move: moveSpace,
         letter: input
       });
-
       moveSpace += 1;
       this.listenTo(space, 'updateBoard', this.render);
       board.append(space.render().$el);
