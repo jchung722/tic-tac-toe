@@ -13,6 +13,15 @@ const GameView = Backbone.View.extend({
       el: this.$('main')
     })
     boardView.render();
+  },
+
+  events: {
+    'click #clear': 'newGame'
+  },
+
+  newGame: function(){
+    this.model.newGame();
+    this.render();
   }
 })
 

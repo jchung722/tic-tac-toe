@@ -13,9 +13,6 @@ const BoardView = Backbone.View.extend({
     var moveSpace = 0;
     board.empty();
     this.model.get("currentBoard").forEach(function(input) {
-      console.log(this.model.get("turnCounter"));
-      console.log(this.model.get(""))
-      console.log(this.model.wincheck)
       const space = new SpaceView({
         model: self.model,
         move: moveSpace,
