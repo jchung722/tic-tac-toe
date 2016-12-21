@@ -64,3 +64,11 @@ button {
 button:hover {
   background-color: #99ffcd;
 }
+
+.win {
+  color: green;
+}
+
+.lose {
+  color: red;
+}
