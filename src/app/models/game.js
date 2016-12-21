@@ -8,13 +8,13 @@ const Game = Backbone.Model.extend({
 
   this.player1 = new Player(player1, "X");
   this.player2 = new Player(player2, "O");
-  this.activePlayer = this.player1;
-  this.inactivePlayer = this.player2;
+  this.set("activePlayer", this.player1);
+  this.set("inactivePlayer", this.player2);
   },
 
   play: function(move) {
     if (move >= 0 && move < 9 && this.get("currentBoard")[move] == " " && this.winCheck(this.get("currentBoard")) == false && this.get("turnCounter") < 9) {
-      this.get("currentBoard")[move] = this.activePlayer.letter;
+      this.get("currentBoard")[move] = this.get("activePlayer").get("letter");
       this.scoreKeeper();
       this.turnHandler();
       return this.get("currentBoard");
@@ -48,28 +48,30 @@ const Game = Backbone.Model.extend({
   turnHandler: function () {
     this.set("turnCounter", this.get("turnCounter") + 1);
     if (this.get("turnCounter") % 2 == 0) {
-      this.activePlayer = this.player1;
-      this.inactivePlayer = this.player2;
+      this.set("activePlayer", this.player1);
+      this.set("inactivePlayer", this.player2);
     } else {
-      this.activePlayer = this.player2;
-      this.inactivePlayer = this.player1;
+      this.set("activePlayer", this.player2);
+      this.set("inactivePlayer", this.player1);
     }
     return this.get("turnCounter");
   },
 
   scoreKeeper: function() {
     if (this.winCheck(this.get("currentBoard")) == true) {
-      this.activePlayer.scorecard["Win"] += 1;
-      this.inactivePlayer.scorecard["Lose"] += 1;
+      this.get("activePlayer").get("scorecard").win += 1;
+      this.get("inactivePlayer").get("scorecard").lose += 1;
     } else if (this.get("turnCounter") == 8 && this.winCheck(this.get("currentBoard")) == false) {
-      this.activePlayer.scorecard["Draw"] += 1;
-      this.inactivePlayer.scorecard["Draw"] += 1;
+      this.get("activePlayer").get("scorecard").draw += 1;
+      this.get("inactivePlayer").get("scorecard").draw += 1;
     }
   },
 
   newGame: function() {
     this.set("currentBoard", [" ", " ", " ", " ", " ", " ", " ", " ", " "]);
     this.set("turnCounter", 0);
+    this.set("activePlayer", this.player1);
+    this.set("inactivePlayer", this.player2);
   }
 
 });

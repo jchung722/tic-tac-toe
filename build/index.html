@@ -8,11 +8,29 @@
   <body>
     <h1>Tic-Tac-Toe</h1>
     <section id="game">
-      <main id="board">
-
-      </main>
-      <button type="button" id= "clear">Reset Game</button>
+      <div id="score"></div>
+      <button type="button" id="clear">Reset Game</button>
+      <main id="board"></main>
     </section>
+
+    <script type="text/template" id="tmpl-player-details">
+      <h3><%- name %></h3>
+      <!-- <button class="edit button">Edit</button> -->
+      <table>
+        <tr>
+          <th>Win</th>
+          <th>Lose</th>
+          <th>Draw</th>
+        </tr>
+        <tr>
+          <td><%- scorecard.win %></td>
+          <td><%- scorecard.lose %></td>
+          <td><%- scorecard.draw %></td>
+        </tr>
+      </table>
+    </script>
+
     <script src="/app.bundle.js" charset="utf-8"></script>
+
   </body>
 </html>

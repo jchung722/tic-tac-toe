@@ -2,10 +2,9 @@ import Backbone from 'backbone';
 
 const Player = Backbone.Model.extend({
   initialize: function(name, letter) {
-  this.name = name.toUpperCase();
-  this.letter = letter;
-
-  this.scorecard = { "Win":0, "Lose": 0, "Draw": 0};
+  this.set("name", name.toUpperCase());
+  this.set("letter", letter);
+  this.set("scorecard", { win:0, lose: 0, draw: 0});
   }
 });
 

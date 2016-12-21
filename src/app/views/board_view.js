@@ -8,13 +8,11 @@ const BoardView = Backbone.View.extend({
   },
 
   render: function() {
+    this.trigger('updateScore', this.model);
     const board = this.$el;
     var self = this;
     var moveSpace = 0;
     board.empty();
-    console.log(this.model.player1.scorecard);
-    console.log(this.model.player2.scorecard);
-    console.log(this.model.activePlayer.name);
     this.model.get("currentBoard").forEach(function(input) {
       const space = new SpaceView({
         model: self.model,
