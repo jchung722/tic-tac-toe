@@ -1,6 +1,5 @@
 body {
   font-family: 'Mallanna', sans-serif;
-  text-align: center:
 }
 main div {
   background-color: #0abab5;
@@ -10,45 +9,38 @@ main div {
   padding: 1% 1% 1% 1%;
   font-size: 75px;
   display: inline-block;
-  text-align: center;
   vertical-align: top;
   font-family: 'Mallanna', sans-serif;
 }
 
 main div:hover {
-  background-color: #0abab5;
   opacity: 0.5;
 }
 
-#board {
-  height: 500px;
-  width: 500px;
-  margin: auto;
-  /*display: inline-table;*/
-}
-
-h1 {
-  font-family: 'Mallanna', sans-serif;
-  font-size: 75px;
-  text-align: center;
-  margin: auto;
-}
-
-h3 {
-  margin: auto;
-}
-
-td {
+#game, #score, td, h1, main div {
   text-align: center;
 }
 
 #score {
   width: 100%;
-  text-align: center;
 }
 
 #score div{
   font-size: 15px;
   display: inline-block;
-  margin: 0 20px 0 20px;
+  margin: 0 30px 0 30px;
+}
+
+#board, h1, h3 {
+  margin: auto;
+}
+
+#board {
+  height: 500px;
+  width: 500px;
+}
+
+h1 {
+  font-family: 'Mallanna', sans-serif;
+  font-size: 75px;
 }
