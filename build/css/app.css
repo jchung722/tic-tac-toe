@@ -1,13 +1,17 @@
+body {
+  font-family: 'Mallanna', sans-serif;
+}
 main div {
   background-color: green;
   height: 140px;
   width: 140px;
   margin: 1% 1% 1% 1%;
   padding: 1% 1% 1% 1%;
-  font-size: 100px;
+  font-size: 75px;
   display: inline-block;
   text-align: center;
   vertical-align: top;
+  font-family: 'Mallanna', sans-serif;
 }
 
 main div:hover {
@@ -17,20 +21,32 @@ main div:hover {
 #board {
   height: 500px;
   width: 500px;
-  background-color: grey;
   margin: auto;
   /*display: inline-table;*/
 }
 
-h1, td {
+h1 {
+  font-family: 'Mallanna', sans-serif;
+  font-size: 75px;
+  text-align: center;
+  margin: auto;
+}
+
+h3 {
+  margin: auto;
+}
+
+td {
   text-align: center;
 }
 
 #score {
   width: 100%;
+  text-align: center;
 }
 
 #score div{
   font-size: 15px;
   display: inline-block;
+  margin: 0 20px 0 20px;
 }
