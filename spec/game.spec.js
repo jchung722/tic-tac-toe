@@ -10,15 +10,15 @@ describe('Game', function() {
 
   describe('Game', function() {
     it('should return player name', function() {
-      expect(testGame.player1.name).toEqual("ELLE");
-      expect(testGame.player2.name).toEqual("JESSICA");
+      expect(testGame.player1.get("name")).toEqual("ELLE");
+      expect(testGame.player2.get("name")).toEqual("JESSICA");
     });
 
     it('should assign letter X to player 1 and letter O to player 2', function() {
-      expect(testGame.player1.letter).toEqual("X");
-      expect(testGame.player2.letter).toEqual("O");
-      expect(testGame.player1.letter).not.toEqual("O");
-      expect(testGame.player2.letter).not.toEqual("X");
+      expect(testGame.player1.get("letter")).toEqual("X");
+      expect(testGame.player2.get("letter")).toEqual("O");
+      expect(testGame.player1.get("letter")).not.toEqual("O");
+      expect(testGame.player2.get("letter")).not.toEqual("X");
     });
 
   });
@@ -91,9 +91,9 @@ describe('Game', function() {
     });
 
     it('should swap activePlayer', function() {
-      expect(testGame.activePlayer.name).toEqual("ELLE");
+      expect(testGame.get("activePlayer").get("name")).toEqual("ELLE");
       expect(testGame.turnHandler()).toEqual(1);
-      expect(testGame.activePlayer.name).toEqual("JESSICA");
+      expect(testGame.get("activePlayer").get("name")).toEqual("JESSICA");
       expect(testGame.turnHandler()).toEqual(2);
       expect(testGame.turnHandler()).toEqual(3);
     });
@@ -108,10 +108,10 @@ describe('Game', function() {
       testGame.play(7);
       testGame.play(5);
       testGame.play(8);
-      expect(testGame.activePlayer.scorecard["Win"]).toEqual(1);
-      expect(testGame.activePlayer.scorecard["Lose"]).toEqual(0);
-      expect(testGame.inactivePlayer.scorecard["Lose"]).toEqual(1);
-      expect(testGame.inactivePlayer.scorecard["Win"]).toEqual(0);
+      expect(testGame.player1.get("scorecard").win).toEqual(1);
+      expect(testGame.player1.get("scorecard").lose).toEqual(0);
+      expect(testGame.player2.get("scorecard").lose).toEqual(1);
+      expect(testGame.player2.get("scorecard").win).toEqual(0);
     });
 
     it('should increment scorecards when game ends in draw', function() {
@@ -125,10 +125,10 @@ describe('Game', function() {
       testGame.play(6);
       testGame.play(7);
       testGame.play(8);
-      expect(testGame.activePlayer.scorecard["Draw"]).toEqual(1);
-      expect(testGame.inactivePlayer.scorecard["Draw"]).toEqual(1);
-      expect(testGame.activePlayer.scorecard["Draw"]).not.toEqual(0);
-      expect(testGame.inactivePlayer.scorecard["Draw"]).not.toEqual(0);
+      expect(testGame.player1.get("scorecard").draw).toEqual(1);
+      expect(testGame.player2.get("scorecard").draw).toEqual(1);
+      expect(testGame.player1.get("scorecard").draw).not.toEqual(0);
+      expect(testGame.player2.get("scorecard").draw).not.toEqual(0);
     });
   });
 
