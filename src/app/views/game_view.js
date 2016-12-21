@@ -14,16 +14,24 @@ const GameView = Backbone.View.extend({
       el: this.$('main')
     });
     boardView.render();
+
     this.listenTo(boardView, 'updateScore', this.render);
     this.$('#score').empty();
     const playerOne = new PlayerView({
       model: this.model.player1,
     });
     this.$('#score').append(playerOne.render().$el)
+
     const playerTwo = new PlayerView({
       model: this.model.player2,
     });
     this.$('#score').append(playerTwo.render().$el)
+
+    if(this.model.get("activePlayer") == this.model.player1) {
+      playerOne.render().$('h3').css({"border-top": "1px solid black", "border-bottom": "1px solid black"})
+    } else {
+      playerTwo.render().$('h3').css({"border-top": "1px solid black", "border-bottom": "1px solid black"})
+    }
   },
 
   events: {

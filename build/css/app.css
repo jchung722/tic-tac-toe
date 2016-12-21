@@ -10,7 +10,7 @@ main div {
   font-size: 75px;
   display: inline-block;
   vertical-align: top;
-  font-family: 'Mallanna', sans-serif;
+  transition-duration: 0.4s;
 }
 
 main div:hover {
@@ -41,6 +41,26 @@ main div:hover {
 }
 
 h1 {
-  font-family: 'Mallanna', sans-serif;
   font-size: 75px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+th, td {
+  font-size: 20px;
+}
+
+button {
+  background-color: white;
+  font-family: 'Mallanna', sans-serif;
+  font-size: 20px;
+  border: 3px solid #99ffcd;
+  margin: 10px 0 10px 0;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: #99ffcd;
 }
