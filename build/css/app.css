@@ -1,8 +1,9 @@
 body {
   font-family: 'Mallanna', sans-serif;
+  text-align: center:
 }
 main div {
-  background-color: green;
+  background-color: #0abab5;
   height: 140px;
   width: 140px;
   margin: 1% 1% 1% 1%;
@@ -15,7 +16,8 @@ main div {
 }
 
 main div:hover {
-  background-color: white;
+  background-color: #0abab5;
+  opacity: 0.5;
 }
 
 #board {
