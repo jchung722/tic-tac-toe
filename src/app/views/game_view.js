@@ -32,6 +32,12 @@ const GameView = Backbone.View.extend({
     } else {
       playerTwo.render().$('h3').css({"border-top": "1px solid black", "border-bottom": "1px solid black"})
     }
+
+    if(this.model.winCheck(this.model.get("currentBoard")) == true) {
+      alert(this.model.get("inactivePlayer").get("name") + " IS THE WINNER!");
+    } else if(this.model.get("turnCounter") == 9 && this.model.winCheck(this.model.get("currentBoard")) == false) {
+      alert("IT IS A DRAW!");
+    }
   },
 
   events: {
