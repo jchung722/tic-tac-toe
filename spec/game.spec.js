@@ -91,9 +91,9 @@ describe('Game', function() {
     });
 
     it('should swap activePlayer', function() {
-      expect(testGame.get("activePlayer").get("name")).toEqual("ELLE");
+      expect(testGame.activePlayer.get("name")).toEqual("ELLE");
       expect(testGame.turnHandler()).toEqual(1);
-      expect(testGame.get("activePlayer").get("name")).toEqual("JESSICA");
+      expect(testGame.activePlayer.get("name")).toEqual("JESSICA");
       expect(testGame.turnHandler()).toEqual(2);
       expect(testGame.turnHandler()).toEqual(3);
     });
