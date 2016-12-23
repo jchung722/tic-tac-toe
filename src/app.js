@@ -5,6 +5,7 @@ import GameView from 'app/views/game_view';
 $(document).ready(function() {
 
 var game = new Game("player 1", "player 2");
+game.fetch();
 
 var gameView = new GameView({
   el: '#game',

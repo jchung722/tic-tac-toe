@@ -27,27 +27,34 @@ const GameView = Backbone.View.extend({
     });
     this.$('#score').append(playerTwo.render().$el)
 
-    if(this.model.get("activePlayer") == this.model.player1) {
+    if(this.model.activePlayer == this.model.player1) {
       playerOne.render().$('h3').css({"border-top": "1px solid black", "border-bottom": "1px solid black"})
     } else {
       playerTwo.render().$('h3').css({"border-top": "1px solid black", "border-bottom": "1px solid black"})
     }
 
-    if(this.model.winCheck(this.model.get("currentBoard")) == true) {
-      alert(this.model.get("inactivePlayer").get("name") + " IS THE WINNER!");
-    } else if(this.model.get("turnCounter") == 9 && this.model.winCheck(this.model.get("currentBoard")) == false) {
+    if(this.model.winCheck(this.model.currentBoard) == true) {
+      alert(this.model.inactivePlayer.get("name") + " IS THE WINNER!");
+      this.model.saveGame();
+    } else if(this.model.turnCounter == 9 && this.model.winCheck(this.model.currentBoard) == false) {
       alert("IT IS A DRAW!");
+      this.model.saveGame();
     }
   },
 
   events: {
     'click #clear': 'newGame'
+    // 'click #save': 'saveGame'
   },
 
   newGame: function(){
     this.model.newGame();
     this.render();
   }
+
+  // saveGame: function(){
+  //   console.log('saved ya');
+  // }
 })
 
 export default GameView;
