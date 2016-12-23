@@ -6,21 +6,23 @@ const Game = Backbone.Model.extend({
   url: 'http://localhost:3000/api/v1/games',
 
   initialize: function(player1, player2) {
-  this.currentBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
-  this.turnCounter = 0;
-
   this.player1 = new Player(player1, "X");
   this.player2 = new Player(player2, "O");
   this.activePlayer = this.player1;
   this.inactivePlayer = this.player2;
+
+  this.set("board", [" ", " ", " ", " ", " ", " ", " ", " ", " "]);
+  this.set("players", [this.player1.get("name"), this.player2.get("name")]);
+  this.set("outcome", null);
+  this.turnCounter = 0;
   },
 
   play: function(move) {
-    if (move >= 0 && move < 9 && this.currentBoard[move] == " " && this.winCheck(this.currentBoard) == false && this.turnCounter < 9) {
-      this.currentBoard[move] = this.activePlayer.get("letter");
+    if (move >= 0 && move < 9 && this.get("board")[move] == " " && this.winCheck(this.get("board")) == false && this.turnCounter < 9) {
+      this.get("board")[move] = this.activePlayer.get("letter");
       this.scoreKeeper();
       this.turnHandler();
-      return this.currentBoard;
+      return this.get("board");
     } else {
       throw new TypeError("Please choose a valid move.");
     }
@@ -61,29 +63,26 @@ const Game = Backbone.Model.extend({
   },
 
   scoreKeeper: function() {
-    if (this.winCheck(this.currentBoard) == true) {
+    if (this.winCheck(this.get("board")) == true) {
       this.activePlayer.get("scorecard").win += 1;
       this.inactivePlayer.get("scorecard").lose += 1;
-    } else if (this.turnCounter == 8 && this.winCheck(this.currentBoard) == false) {
+      this.set("outcome", this.activePlayer.get("letter"));
+    } else if (this.turnCounter == 8 && this.winCheck(this.get("board")) == false) {
       this.activePlayer.get("scorecard").draw += 1;
       this.inactivePlayer.get("scorecard").draw += 1;
+      this.set("outcome", "draw");
     }
   },
 
   newGame: function() {
-    this.currentBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
+    this.set("board", [" ", " ", " ", " ", " ", " ", " ", " ", " "]);
     this.turnCounter = 0;
     this.activePlayer = this.player1;
     this.inactivePlayer = this.player2;
   },
 
   saveGame: function() {
-    var outcome = {
-      board: this.currentBoard,
-      players: [this.player1.get("name"), this.player2.get("name")],
-      outcome: this.inactivePlayer.get("letter")
-    }
-    this.save(outcome);
+    this.save();
   }
 
 });

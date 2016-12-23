@@ -33,10 +33,10 @@ const GameView = Backbone.View.extend({
       playerTwo.render().$('h3').css({"border-top": "1px solid black", "border-bottom": "1px solid black"})
     }
 
-    if(this.model.winCheck(this.model.currentBoard) == true) {
+    if(this.model.winCheck(this.model.get("board")) == true) {
       alert(this.model.inactivePlayer.get("name") + " IS THE WINNER!");
       this.model.saveGame();
-    } else if(this.model.turnCounter == 9 && this.model.winCheck(this.model.currentBoard) == false) {
+    } else if(this.model.turnCounter == 9 && this.model.winCheck(this.model.get("board")) == false) {
       alert("IT IS A DRAW!");
       this.model.saveGame();
     }
